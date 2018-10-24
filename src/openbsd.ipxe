@@ -26,9 +26,9 @@ set openbsd_arch amd64
 goto boot_openbsd
 
 :boot_openbsd
-set src http://ftp.openbsd.org/pub/OpenBSD/${ver}/${openbsd_arch}/bsd.rd
 imgfree
-chain ${src}
+initrd http://ftp.openbsd.org/pub/OpenBSD/${ver}/${openbsd_arch}/bsd.rd
+chain memdisk iso raw
 exit
 
 :openbsd_exit
