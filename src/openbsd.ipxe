@@ -28,8 +28,7 @@ goto boot_openbsd
 :boot_openbsd
 set src http://ftp.openbsd.org/pub/OpenBSD/${ver}/${openbsd_arch}/bsd.rd
 imgfree
-initrd ${src}
-chain ${memdisk} iso raw
+chain ${src}
 exit
 
 :openbsd_exit
