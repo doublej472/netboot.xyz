@@ -25,7 +25,7 @@ boot
 goto gentoo
 
 :20181023
-set src http://distfiles.gentoo.org/releases/amd64/autobuilds/20181023T214502Z/install-amd64-minimal-20181023T214502Z.iso
+set src http://10.0.100.1/install-amd64-minimal-20181023T214502Z.iso
 initrd ${src}
 chain ${memdisk} iso raw
 goto gentoo
