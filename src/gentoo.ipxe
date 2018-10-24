@@ -13,16 +13,21 @@ goto ${menu}
 set os gentoo
 menu Gentoo ${arch_a}
 item 20160204 Gentoo Minimal CD 20160204 (amd64)
+item 20181023 Gentoo Minimal CD 20181023 (amd64)
 choose gentoo_version || goto gentoo_exit
 goto ${gentoo_version}
 
 :20160204
 set gentoopath https://sourceforge.net/projects/netboot-xyz/files/distros/gentoo/amd64/20160204
-echo Please note the gentoo ISO has been regenerated to work with iPXE
-echo using the method here: http://blog.dastrup.com/?p=12
 kernel --name gentoo-kernel ${gentoopath}/kernel/download root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ ${console}
 initrd --name gentoo-initrd.img ${gentoopath}/initrd/download
 boot
+goto gentoo
+
+:20181023
+set src http://distfiles.gentoo.org/releases/amd64/autobuilds/20181023T214502Z/install-amd64-minimal-20181023T214502Z.iso
+initrd ${src}
+chain ${src} raw iso
 goto gentoo
 
 :gentoo_exit
